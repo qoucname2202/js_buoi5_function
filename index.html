@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>baitap-ham-js</title>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<!-- Google font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Bootstrap CSS -->
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+		<!-- Font -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+			integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<!-- Reset CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+			integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<!-- My Css -->
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<div class="container py-5 px-3">
+			<div class="row">
+				<div class="col-3">
+					<div
+						class="nav flex-column nav-pills"
+						id="v-pills-tab"
+						role="tablist"
+						aria-orientation="vertical"
+					>
+						<button
+							class="nav-link active mb-3"
+							id="v-pills-bai1-tab"
+							data-toggle="pill"
+							data-target="#v-pills-bai1"
+							type="button"
+							role="tab"
+							aria-controls="v-pills-bai1"
+							aria-selected="true"
+						>
+							<span class="icon">📒</span>Bài 1
+						</button>
+						<button
+							class="nav-link mb-3"
+							id="v-pills-bai2-tab"
+							data-toggle="pill"
+							data-target="#v-pills-bai2"
+							type="button"
+							role="tab"
+							aria-controls="v-pills-bai2"
+							aria-selected="false"
+						>
+							<span class="icon">📒</span>Bài 2
+						</button>
+						<button
+							class="nav-link mb-3"
+							id="v-pills-bai3-tab"
+							data-toggle="pill"
+							data-target="#v-pills-bai3"
+							type="button"
+							role="tab"
+							aria-controls="v-pills-bai3"
+							aria-selected="false"
+						>
+							<span class="icon">📒</span>Bài 3
+						</button>
+						<button
+							class="nav-link mb-3"
+							id="v-pills-bai4-tab"
+							data-toggle="pill"
+							data-target="#v-pills-bai4"
+							type="button"
+							role="tab"
+							aria-controls="v-pills-bai4"
+							aria-selected="false"
+						>
+							<span class="icon">📒</span>Bài 4
+						</button>
+					</div>
+				</div>
+				<div class="col-9">
+					<div class="tab-content" id="v-pills-tabContent">
+						<div
+							class="tab-pane fade show active"
+							id="v-pills-bai1"
+							role="tabpanel"
+							aria-labelledby="v-pills-bai1-tab"
+						>
+							<h4 class="mb-3 text-warning">🏫 Quản lý tuyển sinh</h4>
+							<div class="bd-callout mb-4 bg-white">
+								💡 Mô hình 3 khối
+								<ol>
+									<li>
+										Đầu vào
+										<ul>
+											<li>Nhận vào điểm 3 môn của sinh viên</li>
+											<li>
+												Nhận vào đối tượng ưu tiên và khu vực ưu tiên mà sinh
+												viên lựa chọn
+											</li>
+										</ul>
+									</li>
+									<li>
+										Xử lý
+										<ul>
+											<li></li>
+										</ul>
+									</li>
+									<li>
+										Đầu ra
+										<ul>
+											<li>Hiển thị kết quả xét tuyển của sinh viên</li>
+										</ul>
+									</li>
+								</ol>
+							</div>
+							<form id="formCalcScore">
+								<div class="row">
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="benchmark">Điểm chuẩn</label>
+												<input
+													autocomplete="off"
+													type="number"
+													id="benchmark"
+													placeholder="Nhập điểm chuẩn"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<select class="form-control" id="formSelectedArea">
+												<option value="">Chọn khu vực</option>
+												<option value="A">A</option>
+												<option value="B">B</option>
+												<option value="C">C</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<select class="form-control" id="formSelectedObj">
+												<option value="">Chọn đối tượng</option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="subScore1">Điểm môn thứ 1</label>
+												<input
+													autocomplete="off"
+													type="number"
+													id="subScore1"
+													placeholder="Nhập điểm môn thứ 1"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="subScore2">Điểm môn thứ 2</label>
+												<input
+													autocomplete="off"
+													type="number"
+													id="subScore2"
+													placeholder="Nhập điểm môn thứ 2"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="subScore3">Điểm môn thứ 3</label>
+												<input
+													autocomplete="off"
+													type="number"
+													id="subScore3"
+													placeholder="Nhập điểm môn thứ 3"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<button class="button" type="submit" id="btnCalcScrore">
+											Kết Quả
+										</button>
+									</div>
+								</div>
+							</form>
+							<div class="alert alert-success mt-4" role="alert">
+								<i class="fa-solid fa-hand-point-right icon-res"></i>
+								<span class="showScore mess"></span>
+							</div>
+						</div>
+						<!-- Bài 2  -->
+						<div
+							class="tab-pane fade"
+							id="v-pills-bai2"
+							role="tabpanel"
+							aria-labelledby="v-pills-bai2-tab"
+						>
+							<h4 class="mb-3 text-warning">🔋 Tính tiền điện</h4>
+							<div class="bd-callout mb-4">
+								💡 Mô hình 3 khối
+								<ol>
+									<li>
+										Đầu vào
+										<ul>
+											<li>Nhập vào họ tên khách hàng, số kw</li>
+										</ul>
+									</li>
+									<li>
+										Xử lý
+										<ul>
+											<li></li>
+										</ul>
+									</li>
+									<li>
+										Đầu ra
+										<ul>
+											<li>Hiển thị số tiền điện của khách hàng</li>
+										</ul>
+									</li>
+								</ol>
+							</div>
+							<form id="formCalcPrice">
+								<div class="row">
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="fullName">Họ và tên</label>
+												<input
+													autocomplete="off"
+													type="text"
+													id="fullName"
+													placeholder="Nhập họ tên"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="numbKw">Số Kw</label>
+												<input
+													autocomplete="off"
+													type="number"
+													id="numbKw"
+													placeholder="Nhập số Kw"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<button class="button" type="submit" id="btnCalcPrice">
+											Tính tiền điện
+										</button>
+									</div>
+								</div>
+							</form>
+							<div class="alert alert-success mt-4" role="alert">
+								<i class="fa-solid fa-hand-point-right icon-res"></i>
+								<span class="showPriceElectric mess"></span>
+							</div>
+						</div>
+						<!--Bài 3:  -->
+						<div
+							class="tab-pane fade"
+							id="v-pills-bai3"
+							role="tabpanel"
+							aria-labelledby="v-pills-bai3-tab"
+						>
+							<h4 class="mb-3 text-warning">💰 Tính thuế thu nhập cá nhân</h4>
+							<div class="bd-callout mb-4">
+								💡 Mô hình 3 khối
+								<ol>
+									<li>
+										Đầu vào
+										<ul>
+											<li>
+												Nhập vào họ và tên người dùng, tổng thu nhập 1 năm, số
+												người phụ thuộc
+											</li>
+										</ul>
+									</li>
+									<li>
+										Xử lý
+										<ul>
+											<li></li>
+										</ul>
+									</li>
+									<li>
+										Đầu ra
+										<ul>
+											<li>Hiển thị số tiền thuế thu nhập cá nhân</li>
+										</ul>
+									</li>
+								</ol>
+							</div>
+							<form id="formCalcTax">
+								<div class="row">
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="customerName">Họ và tên</label>
+												<input
+													autocomplete="off"
+													type="text"
+													id="customerName"
+													placeholder="Nhập họ tên"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="totalPrice">Tổng thu nhập năm</label>
+												<input
+													autocomplete="off"
+													type="number"
+													id="totalPrice"
+													placeholder="Nhập tổng thu nhập năm"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="amountPerson">Số người phụ thuộc</label>
+												<input
+													autocomplete="off"
+													type="number"
+													id="amountPerson"
+													placeholder="Nhập số người phụ thuộc"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<button class="button" type="submit" id="btnCalcTax">
+											Tính tiền thuế
+										</button>
+									</div>
+								</div>
+							</form>
+							<div class="alert alert-success mt-4" role="alert">
+								<i class="fa-solid fa-hand-point-right icon-res"></i>
+								<span class="showTax mess"></span>
+							</div>
+						</div>
+						<!--  -->
+						<div
+							class="tab-pane fade"
+							id="v-pills-bai4"
+							role="tabpanel"
+							aria-labelledby="v-pills-bai4-tab"
+						>
+							<h4 class="mb-3 text-warning">🕸️ Tính tiền cáp</h4>
+							<div class="bd-callout mb-4">
+								💡 Mô hình 3 khối
+								<ol>
+									<li>
+										Đầu vào
+										<ul>
+											<li></li>
+										</ul>
+									</li>
+									<li>
+										Xử lý
+										<ul>
+											<li></li>
+										</ul>
+									</li>
+									<li>
+										Đầu ra
+										<ul>
+											<li>
+												Hiển thị thông tin khách hàng kèm với số tiền cap phải
+												trả
+											</li>
+										</ul>
+									</li>
+								</ol>
+							</div>
+							<form id="formCalcPriceCable">
+								<div class="row">
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<select
+												class="form-control"
+												id="formSelectedCustomer"
+												onchange="enableSelected()"
+											>
+												<option value="">Chọn loại khách hàng</option>
+												<option value="person">Nhà dân</option>
+												<option value="product">Doanh nghiệp</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="pass">Mã khách hàng</label>
+												<input
+													autocomplete="off"
+													type="text"
+													id="pass"
+													placeholder="Nhập mã khách hàng"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4">
+										<div class="form-group">
+											<div class="text-field">
+												<label for="premiumNumb">Số kênh cao cấp</label>
+												<input
+													autocomplete="off"
+													type="number"
+													id="premiumNumb"
+													placeholder="Nhập số kênh cao cấp"
+												/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-6 col-xl-4" id="channels"></div>
+									<div class="col-12">
+										<button class="button" type="submit" id="btnCalcCable">
+											Tính tiền cáp
+										</button>
+									</div>
+								</div>
+							</form>
+							<div class="alert alert-success mt-4" role="alert">
+								<i class="fa-solid fa-hand-point-right icon-res"></i>
+								<span class="showPriceCable mess"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
+		<script src="./js/main.js"></script>
+	</body>
+</html>
