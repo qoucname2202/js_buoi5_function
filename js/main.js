@@ -125,3 +125,48 @@ document.getElementById('btnCalcPrice').addEventListener('click', e => {
 	}, 7000);
 });
 // Exercise 3:
+function calcTax(totalMoney, amount) {
+	let total;
+	if (totalMoney <= 60000000) {
+		total = ((totalMoney - 4000000 - amount * 1600000) * 5) / 100;
+	} else if (totalMoney <= 120000000) {
+		total = ((totalMoney - 4000000 - amount * 1600000) * 10) / 100;
+	} else if (totalMoney <= 210000000) {
+		total = ((totalMoney - 4000000 - amount * 1600000) * 15) / 100;
+	} else if (totalMoney <= 384000000) {
+		total = ((totalMoney - 4000000 - amount * 1600000) * 20) / 100;
+	} else if (totalMoney <= 624000000) {
+		total = ((totalMoney - 4000000 - amount * 1600000) * 25) / 100;
+	} else if (totalMoney <= 960000000) {
+		total = ((totalMoney - 4000000 - amount * 1600000) * 30) / 100;
+	} else {
+		total = ((totalMoney - 4000000 - amount * 1600000) * 35) / 100;
+	}
+	return total.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+}
+document.getElementById('btnCalcTax').addEventListener('click', e => {
+	e.preventDefault();
+	const nameCus = document.getElementById('customerName').value;
+	const money = +document.getElementById('totalPrice').value;
+	const txtSl = +document.getElementById('amountPerson').value;
+	const result = document.querySelector('.showTax');
+	if (money < 0 || txtSl < 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Thông tin nhập vào không hợp lệ',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		setTimeout(() => {
+			document.getElementById('formCalcTax').reset();
+		}, 1500);
+		return '';
+	}
+	const value = calcTax(money, txtSl);
+	result.innerHTML = `Họ tên : ${nameCus} - Tiền thuế thu nhập cá nhân: ${value}`;
+	setTimeout(() => {
+		document.getElementById('formCalcTax').reset();
+		result.innerHTML = '';
+	}, 7000);
+});
