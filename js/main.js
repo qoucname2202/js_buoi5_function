@@ -170,3 +170,47 @@ document.getElementById('btnCalcTax').addEventListener('click', e => {
 		result.innerHTML = '';
 	}, 7000);
 });
+// Exercise 4:
+
+function calcCable(chanelVip, amountCon, selectedValue) {
+	let total;
+	if (selectedValue === 'person') {
+		total = 4.5 + 20.5 + chanelVip * 7.5;
+	} else if (selectedValue === 'product') {
+		if (amountCon <= 10) {
+			total = 15 + chanelVip * 50 + 75;
+		} else {
+			total = 15 + chanelVip * 50 + 75 + (amountCon - 10) * 5;
+		}
+	} else {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Vui lòng chọn loại khách hàng',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		return 0;
+	}
+	return total.toLocaleString('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	});
+}
+document.getElementById('btnCalcCable').addEventListener('click', e => {
+	e.preventDefault();
+	const valueSelect = document.getElementById('formSelectedCustomer').value;
+	const pass = document.getElementById('pass').value;
+	const amountVip = +document.getElementById('premiumNumb').value;
+	const result = document.querySelector('.showPriceCable');
+	let value = calcCable(amountVip, 0, valueSelect);
+	if (document.getElementById('channels').childNodes.length > 0) {
+		const amountConnect = +document.getElementById('connectNumb').value;
+		value = calcCable(amountVip, amountConnect, valueSelect);
+	}
+	result.innerHTML = `Mã khách hàng : ${pass} - Tiền cáp: ${value}`;
+	setTimeout(() => {
+		document.getElementById('formCalcPriceCable').reset();
+		result.innerHTML = '';
+	}, 7000);
+});

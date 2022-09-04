@@ -473,13 +473,48 @@
 									<li>
 										Đầu vào
 										<ul>
-											<li></li>
+											<li>Nhận vào loại khách hàng</li>
+											<li>Nhập mã khách hàng</li>
+											<li>Nhập số kênh cao cấp</li>
+											<li>
+												Nhập số kênh kết nối khi và chỉ khi người dùng chọn loại
+												khách hàng là:
+												<span class="text-danger">Doanh nghiệp</span>
+											</li>
 										</ul>
 									</li>
 									<li>
 										Xử lý
 										<ul>
-											<li></li>
+											<li>
+												TH1: Nếu người dùng chọn loại khách hàng là người dân:
+												<ul>
+													<li>
+														Tiền cáp:
+														<span class="text-danger"
+															>phiHoaDon + phiDv + (soKenhVIP * 7.5)</span
+														>
+													</li>
+												</ul>
+											</li>
+											<li>
+												TH2: Nếu người dùng chọn loại khách hàng là doanh nghiệp
+												<ul>
+													<li>
+														Tiền cáp đối số kết nối <= 10:
+														<span class="text-danger"
+															>phiHoaDon + 75 + (soKenhVIP * 50)</span
+														>
+													</li>
+													<li>
+														Tiền cáp đối số kết nối > 10:
+														<span class="text-danger"
+															>phiHoaDon + 75 + (soKenhVIP * 50) + (soKetNoi -
+															10)*5</span
+														>
+													</li>
+												</ul>
+											</li>
 										</ul>
 									</li>
 									<li>
