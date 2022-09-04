@@ -31,7 +31,6 @@ function enableSelected() {
 	}
 }
 // Exercises 1:
-// trúng tuyển nếu tổng diemTong >= diemChuan && diem1, diem2 , diem3 !== 0
 function totalScore(score1, score2, score3) {
 	if (score1 > 10 || score2 > 10 || score3 > 10) {
 		Swal.fire({
@@ -81,3 +80,48 @@ document.getElementById('btnCalcScrore').addEventListener('click', e => {
 		result.innerHTML = '';
 	}, 7000);
 });
+// Exercise 2:
+function calcPriceElectric(numb) {
+	let total;
+	if (numb <= 50) {
+		total = numb * 500;
+	} else if (numb <= 100) {
+		total = 25000 + (numb - 50) * 650;
+	} else if (numb <= 200) {
+		total = 57500 + (numb - 100) * 850;
+	} else if (numb <= 350) {
+		total = 142500 + (numb - 200) * 1100;
+	} else {
+		total = 307500 + (numb - 350) * 1300;
+	}
+	return total;
+}
+document.getElementById('btnCalcPrice').addEventListener('click', e => {
+	e.preventDefault();
+	const name = document.getElementById('fullName').value;
+	const soKW = +document.getElementById('numbKw').value;
+	const result = document.querySelector('.showPriceElectric');
+	if (soKW < 0) {
+		Swal.fire({
+			position: 'center',
+			icon: 'error',
+			title: 'Số Kw không hợp lệ',
+			showConfirmButton: false,
+			timer: 1500,
+		});
+		setTimeout(() => {
+			document.getElementById('formCalcPrice').reset();
+		}, 1500);
+		return '';
+	}
+	const value = calcPriceElectric(soKW);
+	result.innerHTML = `Họ tên : ${name} - Tiền diện: ${value.toLocaleString(
+		'it-IT',
+		{ style: 'currency', currency: 'VND' },
+	)}`;
+	setTimeout(() => {
+		document.getElementById('formCalcPrice').reset();
+		result.innerHTML = '';
+	}, 7000);
+});
+// Exercise 3:
